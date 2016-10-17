@@ -1,0 +1,55 @@
+{
+    "success":true,
+    "posts": [{
+        "id":1,
+        "title": "新通道",
+        "description": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "city":"通道",
+        "category": "社区",
+        "date": "2014-09-09",
+        "thumb":"http://localhost/GIS/images/app/thumb.jpg",
+        "longitude":109.713577,
+        "latitude":26.034676
+    },{
+        "id":2,
+        "title": "酉歌行",
+        "description": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "city":"酉阳",
+        "category": "风景",
+        "date": "2014-09-09",
+        "thumb":"http://localhost/GIS/images/app/thumb.jpg",
+        "longitude":109.702353,
+        "latitude":26.029547
+    },{
+        "id":2,
+        "title": "酉歌行",
+        "description": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "city":"酉阳",
+        "category": "风景",
+        "date": "2014-09-09",
+        "thumb":"http://localhost/GIS/images/app/thumb.jpg",
+        "longitude":109.717042,
+        "latitude":26.057705
+
+    },{
+        "id":2,
+        "title": "酉歌行",
+        "description": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "city":"酉阳",
+        "category": "风景",
+        "date": "2014-09-09",
+        "thumb":"http://localhost/GIS/images/app/thumb.jpg",
+        "longitude":109.731294,
+        "latitude":26.047415
+    },{
+        "id":2,
+        "title": "酉歌行",
+        "description": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "city":"酉阳",
+        "category": "风景",
+        "date": "2014-09-09",
+        "thumb":"http://localhost/GIS/images/app/thumb.jpg",
+        "longitude":109.726695,
+        "latitude":26.054686
+    }]
+}

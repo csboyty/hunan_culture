@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height,
+    initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <meta name="keywords" content="湖湘文化"/>
+    <meta name="description" content="湖湘文化">
+    <title>湖湘文化</title>
+    <link href="../static/css/frontend/src/postDetail.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<section class="main">
+    <!--<header class="header">
+        <h1 class="logo"><a href="">湖湘文化</a></h1>
+        <a class="toHome" href="http://121.40.16.252/hncweb/">首页</a>
+    </header>-->
+    <article class="singlePost">
+        <h2 class="title">{{article.title}}</h2>
+        <time class="date">{{article.date_add}}</time>
+        <span class="address address1">{{article.location.city}} {{article.location.name}}</span>
+
+        <p class="description">{{article.description}}</p>
+
+        <div class="content">
+            {% for as in article.assets %}
+            <figure>
+                <img src="{{as.profile_file}}"/>
+
+                <figcaption>
+                    {{as.name}}
+                <span class="description">
+                    {{as.description}}
+                </span>
+                </figcaption>
+
+            </figure>
+            {% endfor %}
+        </div>
+    </article>
+</section>
+</body>
+</html>

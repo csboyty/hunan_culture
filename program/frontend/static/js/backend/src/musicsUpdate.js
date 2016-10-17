@@ -1,0 +1,123 @@
+var vAndMUpdate=(function(config,functions){
+    return{
+        submitForm:function(form){
+            var me=this;
+            functions.showLoading();
+            $(form).ajaxSubmit({
+                dataType:"json",
+                headers:{
+                    "X-Requested-With":"XMLHttpRequest"
+                },
+                data:{
+                    assets:JSON.stringify([{
+                        pos:1,
+                        type:1,
+                        name:"",
+                        profile_filename:$("#drawing").val(),
+                        profile_file:"",
+                        media_filename:"",
+                        media_file:$("#path").val()
+                    }])
+                },
+                success:function(response){
+                    if(response.data.success){
+                        $().toastmessage("showSuccessToast",config.messages.optSuccess);
+                        setTimeout(function(){
+                            window.location.href="admin/article/article_music";
+                        },3000);
+                    }else{
+                        functions.ajaxReturnErrorHandler(response.data.error_code);
+                    }
+                },
+                error:function(){
+                    functions.ajaxErrorHandler();
+                }
+            });
+        }
+    }
+})(config,functions);
+
+$(document).ready(function(){
+
+    functions.createQiNiuUploader({
+        maxSize:config.uploader.sizes.img,
+        filter:config.uploader.filters.img,
+        uploadBtn:"thumbUploadBtn",
+        multipartParams:null,
+        uploadContainer:"thumbUploadContainer",
+        fileAddedCb:null,
+        progressCb:null,
+        uploadedCb:function(file,info){
+            //判断图片尺寸
+            $.get(info.url+"?imageInfo",function(data){
+                //console.log(data);
+                if(data.width==200&&data.height==200){
+                    $("#thumb").attr("src",info.url);
+                    $("#drawing").val(info.url);
+                }else{
+                    $().toastmessage("showErrorToast",config.messages.imageError200x200);
+                }
+
+            });
+        }
+    });
+
+    $("#myForm").validate({
+        ignore:[],
+        rules:{
+            name:{
+                required:true,
+                maxlength:32
+            },
+            author:{
+                required:true,
+                maxlength:32
+            },
+            profile_image:{
+                required:true
+            },
+            longitude:{
+                required:true,
+                maxlength:32
+            },
+            latitude:{
+                required:true,
+                maxlength:32
+            },
+            path:{
+                required:true,
+                maxlength:128
+            }
+
+        },
+        messages:{
+            name:{
+                required:config.validErrors.required,
+                maxlength:config.validErrors.maxLength.replace("${max}",32)
+            },
+            author:{
+                required:config.validErrors.required,
+                maxlength:config.validErrors.maxLength.replace("${max}",32)
+            },
+            profile_image:{
+                required:config.validErrors.required
+            },
+            longitude:{
+                required:config.validErrors.required,
+                maxlength:config.validErrors.maxLength.replace("${max}",32)
+            },
+            latitude:{
+                required:config.validErrors.required,
+                maxlength:config.validErrors.maxLength.replace("${max}",32)
+            },
+            path:{
+                required:config.validErrors.required,
+                maxlength:config.validErrors.maxLength.replace("${max}",128)
+            }
+
+        },
+        submitHandler:function(form) {
+            vAndMUpdate.submitForm(form);
+        }
+    });
+});

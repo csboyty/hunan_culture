@@ -1,0 +1,21 @@
+{
+    "data":{
+        "sEcho":1,
+        "success":true,
+        "iTotalRecords":4,
+        "iTotalDisplayRecords":4,
+        "aaData": [{
+            "id":1,
+            "name": "风景"
+        },{
+            "id":2,
+            "name": "人文"
+        },{
+            "id":3,
+            "name": "物语"
+        },{
+            "id":4,
+            "name": "社区"
+        }]
+    }
+}

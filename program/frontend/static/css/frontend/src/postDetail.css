@@ -1,0 +1,107 @@
+body{
+    margin: 0px;
+    padding:0px;
+    height: 100%;
+    font-family: "微软雅黑","黑体","Arial";
+    font-size: 14px;
+}
+.main{
+    max-width: 1920px;
+    width: 100%;
+}
+.header{
+    height: 100px;
+    background:url(../../../images/frontend/app/headerBg.jpg) no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+}
+/**
+*logo
+*/
+.logo{
+    margin:0px;
+    font-size: 0px;
+}
+.logo a{
+    background: url(../../../images/frontend/app/logo.png) no-repeat;
+    width: 75px;
+    height: 70px;
+    display: block;
+    margin: auto;
+}
+.toHome{
+    font-size: 18px;
+    color: #fff;
+    text-decoration: none;
+    margin-left: 100px;
+}
+/**
+*
+*/
+.footer{
+    background: #3F4040;
+    color: #fff;
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+}
+
+/**
+*单篇文章详情
+*/
+.singlePost{
+    width: 96%;
+    margin: auto;
+    padding-bottom: 20px;
+}
+.singlePost .title{
+    text-align: left;
+    font-size: 24px;
+    margin: 20px 0px 5px 0px;
+}
+.singlePost .date{
+    padding-left: 20px;
+    background: url(../../../images/frontend/app/iconDate.png) no-repeat;
+    font-size: 14px;
+    color: #515151;
+}
+.singlePost .address{
+    font-size: 14px;
+    line-height: 21px;
+    background: url(../../../images/frontend/app/iconLocation.png) no-repeat;
+    color: #adadad;
+    text-indent: 20px;
+    display: inline-block;
+    margin-left: 10px;
+}
+.singlePost>.description{
+    text-align: left;
+    border-top:dashed #ccc 1px;
+    font-size: 14px;
+    text-indent: 28px;
+    line-height: 18px;
+    padding-top: 10px;
+    margin-top: 5px;
+}
+.singlePost figure{
+    margin: 20px 0px 0px 0px;
+}
+.singlePost .content a{
+    position: relative;
+    display: inline-block;
+    width:100%;
+}
+.singlePost .content img{
+    display: block;
+    margin: auto;
+    max-width: 100%;
+    width:100%;
+}
+.singlePost .content figcaption{
+    font-size: 12px;
+    text-align: center;
+}
+.singlePost .content figcaption .description{
+    display: block;
+}

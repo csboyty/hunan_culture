@@ -1,0 +1,38 @@
+<ul class="menu1">
+    <li class="item"><a class="link link1 " href="./">文章
+        <span class="arrow">下面的三角，采用覆盖</span>
+        <span class="arrow arrow1">下面的三角，采用覆盖</span>
+    </a></li>
+    <li class="item"><a class="link link2 " href="musics">音乐
+        <span class="arrow">下面的三角，采用覆盖</span>
+        <span class="arrow arrow1">下面的三角，采用覆盖</span></a></li>
+    <li class="item"><a class="link link3 active" href="videos">视频
+        <span class="arrow">下面的三角，采用覆盖</span>
+        <span class="arrow arrow1">下面的三角，采用覆盖</span></a></li>
+</ul>
+
+<ul class="list list1">
+    <li class="item" ng-repeat="i in items">
+        <a class="link" ng-href="videos/{{i.id}}"  target="_blank">
+            <div class="thumbContainer">
+                <img class="thumb" ng-src="{{i.profile}}">
+                <div class="hover">hover</div>
+                <span class="playIcon">playIcon</span>
+            </div>
+            <h2 class="title ellipsis">{{i.title}}</h2>
+            <span class="address">{{i.location.city}} {{i.location.name}}</span>
+        </a>
+    </li>
+</ul>
+
+
+<div ng-if="showPaging">
+    <paging
+            class="small"
+            page="currentPage"
+            page-size="pageSize"
+            total="total"
+            show-prev-next="true"
+            paging-action="DoCtrlPagingAct('Paging Clicked', page, pageSize, total)">
+    </paging>
+</div>

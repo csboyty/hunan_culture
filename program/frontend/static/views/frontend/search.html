@@ -1,0 +1,26 @@
+<h3>搜索：{{mainFlags.searchContent}}</h3>
+<ul class="list">
+    <li class="item" ng-repeat="i in items">
+        <a class="link" ng-href="articles/{{i.id}}"  target="_blank">
+            <h2 class="title ellipsis">{{i.title}}</h2>
+            <span class="date">{{i.date_add}}</span>
+            <span class="category">{{i.category.name}}</span>
+            <div class="thumbContainer">
+                <img class="thumb" ng-src="{{i.profile}}">
+                <div class="hover">hover</div>
+            </div>
+            <p class="excerpt">{{i.description}}</p>
+            <span class="address">{{i.location.city}} {{i.location.name}}</span>
+        </a>
+    </li>
+</ul>
+<div ng-if="showPaging">
+    <paging
+            class="small"
+            page="currentPage"
+            page-size="pageSize"
+            total="total"
+            show-prev-next="true"
+            paging-action="DoCtrlPagingAct('Paging Clicked', page, pageSize, total)">
+    </paging>
+</div>

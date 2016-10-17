@@ -1,0 +1,37 @@
+<!---单篇文章--->
+<article class="singlePost" ng-controller="postDetail">
+    <h2 class="title">{{post.title}}</h2>
+    <p class="date">{{post.created|getDate}}</p>
+
+    <p class="description">{{post.description}}</p>
+
+    <div class="content">
+        <figure ng-repeat="at in post.assets" ng-switch="at.type">
+            <img ng-switch-when="1" ng-src="{{at.profile_file}}"/>
+
+            <a ng-switch-when="2" ng-href="{{at.media_file}}" ng-if="mainVars.isMobile" target="_self" class="hasMedia hasVideo">
+                <img ng-src="{{at.profile_file}}"/>
+            </a>
+            <a ng-switch-when="2" ng-href="{{at.media_file}}" ng-if="!mainVars.isMobile" target="_blank" class="hasMedia hasVideo">
+                <img ng-src="{{at.profile_file}}"/>
+            </a>
+
+            <a ng-switch-when="8" ng-href="{{at.view_url}}" ng-if="mainVars.isMobile" target="_self"
+               ng-class="{has3d:at.view_url}" class="hasMedia">
+                <img ng-src="{{at.profile_file}}"/>
+            </a>
+            <a ng-switch-when="8" ng-href="{{at.view_url}}" ng-if="!mainVars.isMobile" target="_blank"
+               ng-class="{has3d:at.view_url}" class="hasMedia">
+                <img ng-src="{{at.profile_file}}"/>
+            </a>
+
+            <figcaption ng-if="at.name||at.description">
+                {{at.name}}
+                <span class="description">
+                    {{at.description}}
+                </span>
+            </figcaption>
+
+        </figure>
+    </div>
+</article>

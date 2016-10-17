@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% include "backend/head.html" %}
+    <link href="static/css/backend/lib/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link type="text/css" rel="stylesheet" href="static/css/backend/src/zyup.css">
+    <link href="static/css/backend/lib/jquery.toastmessage.css" rel="stylesheet" type="text/css">
+
+    <link href="static/css/backend/src/main.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="static/js/backend/lib/jquery-2.0.3.min.js"></script>
+    <script src="static/js/backend/lib/bootstrap.min.js"></script>
+    <script src="static/js/backend/lib/jquery.toastmessage.js"></script>
+    <script type="text/javascript" src="static/js/backend/lib/jquery.form.js"></script>
+    <script type="text/javascript" src="static/js/backend/lib/juicer-min.js"></script>
+    <script type="text/javascript" src="static/js/backend/lib/plupload.full.min.js"></script>
+    <script type="text/javascript" src="static/js/backend/lib/qiniu.js"></script>
+    <script type="text/javascript" src="static/js/backend/src/zyup.js"></script>
+    <script type="text/javascript" src="static/js/backend/src/zyupEvent.js"></script>
+    <script>
+        var postId = '{{article.id}}';
+    </script>
+</head>
+<body>
+
+<!-- 上传完成的html模版-->
+<script type="text/template" id="zyupCompleteLiTpl">
+    <li class="zyupMediaItem" data-media-id='${mediaId}'
+        draggable="true">
+        <img class="zyupSmallThumb" src="${thumbSrc}">
+        <span title='${filename}' class="zyupMediaFilename">${filename}</span>
+        <span class="zyupDelete zyupHidden"></span>
+    </li>
+</script>
+
+<!--预览-->
+<script type="text/template" id="zyupUploadPreviewTpl">
+    <h2>${title}</h2>
+
+    <p class="zyupPublishTime">${date}</p>
+
+    <p class="zyupAbstract">
+        ${description}
+    </p>
+
+    <div class="zyupMainContent">
+
+        {@each medias as m}
+        <figure>
+            <!--<img src="${m.thumb}"/>-->
+            $${m.content}
+            <figcaption>${m.title}</figcaption>
+        </figure>
+        {@/each}
+
+    </div>
+</script>
+{% include "backend/header.html" %}
+{% include "backend/menu.html" %}
+
+<section class="right">
+    <article class="main">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h1 class="panel-title">发布文章</h1>
+            </div>
+            <div class="panel-body" id="opt-body">
+                <!--上传模块-->
+                <section class="zyupScreen">
+                    <nav class="zyupTab" id="zyupTab">
+                        <ol>
+                            <li><a href="#zyupStep1" class="zyupStep zyupStepCurrent">1. 填写基本信息</a></li>
+                            <li><a href="#zyupStep2" class="zyupStep">2. 上传</a></li>
+                            <li><a href="#zyupStep3" class="zyupStep">3. 提交</a></li>
+                        </ol>
+                    </nav>
+                    <form class="zyupForm" id="zyupForm" action="admin/article/create_or_update" method="post">
+                        <input type="hidden" value="1" name="content_type">
+                        {% if article.id %}
+                        <input type="hidden" name="article_id" id="zyupEntityId" value="{{article.id}}">
+                        {% endif %}
+
+                        <div class="zyupStepPanel zyupStepPanel1 " id="zyupStep1">
+                            <div class="zyupField">
+                                <label for="zyupTitleInput">标题</label>
+                                <input type="text" autocomplete="default" maxlength="80" value="{{article.title}}"
+                                       class="zyupInputGray"
+                                       name="title" id="zyupTitleInput" placeholder="">
+                            </div>
+                            <div class="zyupField">
+                                <label for="zyupTitleInput">分类</label>
+                                <select name="category_id" class="zyupInputGray">
+                                    {% for c in categories %}
+                                    {% if article.category_id == c.id %}
+                                    <option selected value="{{c.id}}">{{c.name}}</option>
+                                    {% else %}
+                                    <option value="{{c.id}}">{{c.name}}</option>
+                                    {% endif %}
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <!--<div class="zyupField">
+                                <label for="zyupTitleInput">地点</label>
+                                <select name="address" class="zyupInputGray">
+                                    <option>湖南/通道/平坦</option>
+                                </select>
+                            </div>-->
+                            <div class="zyupField">
+                                <label for="zyupTitleInput">地点</label>
+                                <select name="location_id" class="zyupInputGray">
+                                    {% for l in locations %}
+                                    {% if article.location_id == l.id %}
+                                    <option value="{{l.id}}" selected>{{l.city}}/{{l.name}}</option>
+                                    {% else %}
+                                    <option value="{{l.id}}">{{l.city}}/{{l.name}}</option>
+                                    {% endif %}
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="zyupField">
+                                <label for="zyupTitleInput">经度</label>
+                                <input type="text" value="{{article.longitude}}" class="zyupInputGray"
+                                       name="longitude" id="zyupLngInput">
+                            </div>
+                            <div class="zyupField">
+                                <label for="zyupTitleInput">纬度</label>
+                                <input type="text" value="{{article.latitude}}" class="zyupInputGray"
+                                       name="latitude" id="zyupLatInput">
+                            </div>
+                            <div class="zyupField">
+                                <label for="zyupTitleInput">时间</label>
+                                <input type="date" value="{{article.date_add}}" class="zyupInputGray"
+                                       name="date_add">
+                            </div>
+                            <div class="zyupField">
+                                <label for="zyupDescriptionTxt">内容说明</label>
+                                <textarea class="zyupInputGray" name="description" id="zyupDescriptionTxt"
+                                          placeholder="">{{article.description}}</textarea>
+                            </div>
+                            <div class="zyupThumbContainer" id="zyupThumbContainer">
+                                <span class="zyupTip">300x200的jpg或png图像。</span>
+                                <a href="#" class="zyupButton" id="zyupThumbUploadBtn">上传缩略图</a>
+
+                                {% if article.profile %}
+                                <img class="zyupThumb" id="zyupThumb" width="300" height="200"
+                                     src="{{article.profile}}"/>
+                                {% else %}
+                                <img class="zyupThumb" id="zyupThumb" width="300" height="200"
+                                     src="static/images/backend/zyup/zyupDefaultThumb.png"/>
+                                {% endif %}
+                                <input type="hidden" value="{{article.profile}}" name="profile" id="zyupThumbUrl">
+                            </div>
+                        </div>
+
+                        <!-- step 2-->
+                        <div class="zyupStepPanel zyupStepPanel2 zyupHidden" id="zyupStep2">
+                            <div class="zyupColumn zyupColumnLeft" id="zyupUploadImageContainer">
+                                <span class="zyupColumnLeftHeader" id="zyupUploadImage">上传图片</span>
+
+                                <ol id="zyupMediaList" class="zyupMediaList">
+                                    {% for as in article.assets %}
+                                    <li class="zyupMediaItem" data-media-id='{{loop.index}}'
+                                        draggable="true">
+                                        <img class="zyupSmallThumb" src="{{as.profile_file}}">
+                                        <span title='{{as.profile_filename}}' class="zyupMediaFilename">{{as.profile_filename}}</span>
+                                        <span class="zyupDelete"></span>
+                                    </li>
+                                    {% endfor %}
+                                </ol>
+                            </div>
+                            <div class="zyupColumn zyupColumnRight" id="zyupColumnRight">
+                                <header class="zyupColumnRightHeader">
+                                    <p><b id="zyupCurrentType">设置</b></p>
+                                </header>
+                                <article class="zyupContent zyupHidden" id="zyupContent">
+                                    <section class="zyupColumn50">
+                                        <section id="zyupLeftBottom">
+                                            <div class="zyupToolbar" id="zyupUpdateThumbContainer">
+                                                <label class="zyupSectionHeading">缩略图</label>
+                                                <input type="button" id="zyupUpdateThumbButton"
+                                                       class="zyupButton zyupUpdateThumbnail" value="更换">
+
+                                                <div class="zyupTooltips">限2M以内的jpg或png</div>
+                                            </div>
+                                            <img src="static/images/backend/zyup/zyupDefaultThumb.png"
+                                                 id="zyupMediaThumb" class="zyupMediaThumb">
+                                        </section>
+                                    </section>
+                                    <section id="zyupRight" class="zyupColumn50">
+                                        <!--<section class="zyupBindFileContainer">
+                                            <label class="zyupSectionHeading">绑定媒体文件<span class="zyupTooltips">(可选)</span></label>
+                                            <span class="zyupButton zyupBindFile" id="zyupBindFile">添加文件</span>
+                                            &lt;!&ndash;媒体文件类型的menu&ndash;&gt;
+                                    <ul id="zyupAddMediaMenu" class="zyupAddMediaMenu">
+                                        <li><a id="zyupUploadMp4" class="zyupTypes1 zyupTypes">视频（MP4）</a></li>
+                                        <li><a id="zyupUpload3D" class="zyupTypes2 zyupTypes">3D环境（ZIP）</a></li>
+                                    </ul>
+                                    <div class="zyupBindFileInfo zyupHidden" id="zyupBindFileInfo">
+                                                    <span class="zyupBindFileName" title="文件名" id="zyupBindFileName">
+                                                        文件名文件名文件名文件名文件名文件名文件名文件名文件名文件名文件名文件名
+                                                    </span>
+                                        <span class="zyupDeleteBindFile" id="zyupDeleteBindFile">删除</span>
+                                    </div>
+                                </section>-->
+                                        <section>
+                                            <label class="zyupSectionHeading">标题<span
+                                                    class="zyupTooltips">(可选)</span></label>
+                                            <input maxlength="80" type="text" id="zyupMediaTitle" class="zyupInputText">
+                                        </section>
+                                        <section>
+                                            <label class="zyupSectionHeading">描述<span
+                                                    class="zyupTooltips">(可选)</span></label>
+                                            <textarea class="zyupTextareaInput" id="zyupMediaMemo"></textarea>
+                                        </section>
+                                    </section>
+                                </article>
+                            </div>
+                        </div>
+
+                        <!-- step 3-->
+                        <div class="zyupStepPanel zyupStepPanel3 zyupHidden" id="zyupStep3">
+                            <input type="submit" autocomplete="default" value="提交" class="zyupFormSubmitBtn"
+                                   name="zyupFormSubmitBtn" id="zyupFormSubmitBtn"/>
+                            <article id="zyupPreview" class="zyupPreview">
+                                <!-- 模板内容加载区 -->
+                            </article>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </article>
+</section>
+
+<div class="zyupLoading zyupHidden" id="zyupLoading">
+    <span class="text">Loading...</span>
+</div>
+
+</body>
+</html>

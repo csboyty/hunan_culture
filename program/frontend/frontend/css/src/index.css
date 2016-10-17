@@ -1,0 +1,500 @@
+html{
+    width: 100%;
+    height: 100%;
+}
+body{
+    margin: 0px;
+    padding:0px;
+    height: 100%;
+    font-family: "微软雅黑","黑体","Arial";
+    font-size: 14px;
+}
+ul{
+    margin: 0px;
+    padding:0px;
+}
+li{
+    list-style: none;
+    display: inline-block;
+}
+a{
+    text-decoration: none;
+    color: #ccc;
+}
+input:focus{
+    outline: none;
+}
+.hidden{
+    display: none!important;
+}
+
+.main{
+    max-width: 1920px;
+    width: 100%;
+}
+.header{
+    height: 150px;
+    background:url(../../images/app/headerBg.jpg) no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+}
+/**
+*logo
+*/
+.logo{
+    margin:0px;
+    font-size: 0px;
+}
+.logo a{
+    background: url(../../images/app/logo.png) no-repeat;
+    width: 75px;
+    height: 70px;
+    display: block;
+    margin: auto;
+}
+.search{
+    height: 30px;
+    width: 200px;
+    background: url(../../images/app/search.png) no-repeat left center;
+    border: 1px solid #fff;
+    position: absolute;
+    left:4.5%;
+    bottom:40px;
+    color: #ffffff !important;
+    padding-left: 30px;
+}
+/**
+*菜单
+*/
+.menu{
+    position: absolute;
+    right:5%;
+    bottom:40px;
+    font-size: 0px;
+}
+.menu li{
+
+}
+.menu li a{
+    color:#fff;
+    font-size: 16px;
+    display: block;
+    width: 50px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+.menu li a:hover,.menu li a.active{
+    border: 1px solid #fff;
+}
+/**
+*tab
+*/
+.tab{
+    margin: 50px auto 0px auto;
+    height: 30px;
+    text-align: center;
+    font-size: 0px;
+}
+.tab li{
+
+}
+.tab li a{
+    color:#fff;
+    display: block;
+    width: 70px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border:1px solid #ccc;
+    border-bottom: none;
+    font-size: 14px;
+}
+.tab li a:hover,.tab li a.active{
+    background: #F7F0EA;
+    color: #000;
+}
+.fixedTab{
+    position: fixed;
+    top:140px;
+    right:0px;
+    width: 64px;
+}
+.fixedTab li a{
+    width: 64px;
+    height: 64px;
+    display: block;
+    font-size: 0px;
+}
+.fixedTab li:first-child a{
+    background: url(../../images/app/iconList.png) no-repeat center center;
+    background-size: cover;
+}
+.fixedTab li:last-child a{
+    background: url(../../images/app/iconMap.png) no-repeat center center;
+    background-size:cover;
+}
+/**
+*postList
+*/
+.postList{
+    width:96%;
+    font-size: 0px;
+    margin:25px auto 30px auto;
+    text-align: center;
+}
+.postList li{
+    width: 24%;
+    text-align: left;
+    min-width: 300px;
+    margin: 0.5% 0.5%;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-shadow: 0px 0px 1px 1px #eee;
+}
+.postList li a{
+    color: #000;
+}
+.postList .thumb{
+    width: 100%;
+    height: auto;
+}
+.postList .infoContainer{
+    padding:5px;
+}
+.postList .title{
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0px;
+}
+.postList .description{
+    line-height: 20px;
+    font-size: 14px;
+    margin: 5px 0px;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+.postList .info{
+    font-size: 10px;
+    position: relative;
+}
+.postList .info .date{
+    position: absolute;
+    left:0px;
+    top:0px;
+}
+.postList .info .address{
+    display: block;
+    width:30%;
+    margin: auto;
+}
+.postList .info .category{
+    background: #018FE0;
+    position: absolute;
+    right: 0px;
+    color: #fff;
+    height: 20px;
+    line-height: 20px;
+    top:-3px;
+    padding:0px 5px;
+}
+.postList .info .landscape{
+    background: #61D641;
+}
+.postList .info .artifact{
+    background: #FFBC71;
+}
+.postList .info .people{
+    background: #E80000;
+}
+/**
+*地图
+*/
+.map{
+    width: 100%;
+    min-height: 600px !important;
+}
+
+/**
+*地点描述
+*/
+.townPanel{
+
+}
+.town{
+
+}
+.town>.title{
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 10px;
+    font-size: 18px;
+    height: 30px;
+    line-height: 30px;
+    width: 91%;
+    margin: 20px auto 30px auto;
+}
+.town>.description{
+    white-space: pre-wrap;
+    width: 91%;
+    margin:auto
+}
+.town .return{
+    background: #000;
+    font-size: 18px;
+    padding: 5px;
+}
+.town .return a{
+    color: #fff;
+}
+
+/**
+*单篇文章详情
+*/
+.singlePost{
+    width: 91%;
+    margin: auto;
+    padding-bottom: 20px;
+}
+.singlePost .title{
+    text-align: center;
+}
+.singlePost .date{
+    text-align: center;
+}
+.singlePost>.description{
+    text-align: center;
+}
+.singlePost figure{
+    margin: 40px 0px 0px 0px;
+}
+.singlePost .content a{
+    position: relative;
+    display: inline-block;
+    width:100%;
+}
+.singlePost .content img{
+    display: block;
+    margin: auto;
+    max-width: 100%;
+    width:100%;
+}
+.singlePost .content figcaption{
+    font-size: 14px;
+    text-align: center;
+}
+.singlePost .content figcaption .description{
+    display: block;
+}
+.hasMedia:before{
+    content:"";
+    width: 50px;
+    height: 60px;
+    position: absolute;
+    left: 10px;
+    top:-6px;
+}
+.hasVideo:before{
+    background: url(../../images/app/zyupMediaFlagLocalVideo.png) no-repeat;
+}
+.hasPpt:before{
+    background: url(../../images/app/zyupMediaFlagPpt.png) no-repeat;
+}
+.has3d:before{
+    background: url(../../images/app/zyupMediaFlag3d.png) no-repeat;
+}
+.hasFile:before{
+    background: url(../../images/app/zyupMediaFlagFile.png) no-repeat;
+}
+.hasWebVideo:before{
+    background: url(../../images/app/zyupMediaFlagWebVideo.png) no-repeat;
+}
+.hasFlash:before{
+    background: url(../../images/app/zyupMediaFlagFlash.png) no-repeat;
+}
+
+
+/**
+*
+*/
+.footer{
+    background: #3F4040;
+    color: #fff;
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+}
+
+/**
+*loading
+*/
+.blackout {
+    background: #000;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 9998;
+    opacity: 0.7;
+    top: 0;
+    left: 0;
+}
+.loading{
+    position: absolute;
+    z-index: 10000;
+    top: 50%;
+    left: 50%;
+    height:60px;
+    width:80px;
+    text-align: center;
+    line-height: 100%;
+    color:#ccc;
+    margin: -30px 0px 0px -40px;
+}
+.loading_spinner{
+
+}
+
+/**
+*弹出层
+*/
+.infoWindow{
+
+}
+.infoWindow .title{
+    font-size: 20px;
+    font-weight: normal;
+    margin: 0px;
+}
+.infoWindow .postTitle{
+    font-size: 16px;
+}
+.infoWindow .description{
+    line-height: 20px;
+    color: #ccc;
+    margin: 5px 0px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+.infoWindow .categoryList{
+    font-size: 0px;
+}
+.infoWindow .categoryList li{
+    width: 50%;
+    font-size: 15px;
+    text-align: center;
+    margin-top: 5px;
+}
+.infoWindow .categoryList li a{
+    color:cornflowerblue;
+}
+.infoWindow .thumb{
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+.infoWindow .infoContainer{
+    padding:5px;
+}
+.infoWindow .info{
+    font-size: 10px;
+    position: relative;
+}
+.infoWindow .info .date{
+    position: absolute;
+    left:0px;
+    top:0px;
+}
+.infoWindow .info .address{
+    display: block;
+    width:30%;
+    margin: auto;
+}
+.infoWindow .info .category{
+    background: #018FE0;
+    position: absolute;
+    color:#fff;
+    right: 0px;
+    height: 20px;
+    line-height: 20px;
+    top:-3px;
+    padding:0px 5px;
+}
+
+/**
+*popWindow
+*/
+.popWindow{
+    position: fixed;
+    z-index: 9999;
+    top:0px;
+    left:0px;
+    bottom:0px;
+    right:0px;
+    background: #fff;
+    overflow: auto;
+}
+.popWindow .close{
+    position: fixed;
+    right:15px;
+    top:20px;
+    display: block;
+    height:58px;
+    width:58px;
+    background: url(../../images/app/close.png) no-repeat center center;
+    background-size: cover;
+    font-size: 0px;
+    cursor: pointer;
+}
+.popWindow .mobileClose{
+    height:36px;
+    width:36px;
+    position: fixed;
+    right:0px;
+    top:20px;
+}
+
+/**
+*响应式
+*/
+@media screen and (max-width: 670px) {
+    .header{
+        height: 120px;
+    }
+    .logo a{
+        margin: 0px;
+    }
+    .search{
+        border: none;
+        border-bottom: 1px solid #fff;
+        right:3%;
+        left: inherit;
+        bottom:50px;
+    }
+    .menu{
+        width: 100%;
+        right:0px;
+        bottom:0px;
+        background: #000;
+        font-size: 0px;
+        letter-spacing:-4px;
+    }
+    .menu li{
+        width: 20%;
+        letter-spacing:0px;
+    }
+    .menu li a{
+        width: 100%;
+        border:none;
+    }
+    .menu li a:hover,.menu li a.active{
+        border: none;
+        background: #F7F0EA;
+        color:#000;
+    }
+}
+

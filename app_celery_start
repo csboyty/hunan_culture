@@ -1,0 +1,19 @@
+#! /bin/bash
+
+HNC_DIR=/home/dev/workspaces/python-workspace/projects/hunan-culture
+VENV_DIR=/home/dev/workspaces/python-workspace/flask-env
+USER=dev
+GROUP=dev
+
+
+cd $VENV_DIR
+source bin/activate
+
+cd $HNC_DIR
+
+export PSYCOGREEN=true
+
+exec celery worker -A program.tasks -P gevent \
+    --loglevel=INFO \
+    --logfile /home/dev/workspaces/python-workspace/projects/hunan-culture/logs/celery.log \
+

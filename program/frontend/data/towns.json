@@ -1,0 +1,17 @@
+{
+    "success":true,
+    "towns":[
+        {
+            "id":2,
+            "name":"坪坦乡",
+            "longitude":109.722349,
+            "latitude":26.04112,
+            "description":"天安门坐落在中国北京市中心,故宫的南侧,与天安门广场隔长安街相望,是清朝皇城的大门。天安门坐落在中国北京市中心,故宫的南侧,与天安门广场隔长安街相望,是清朝皇城的大门。天安门坐落在中国北京市中心,故宫的南侧,与天安门广场隔长安街相望,是清朝皇城的大门",
+            "landscapeCount":3,
+            "artifactCount":4,
+            "communityCount":5,
+            "peopleCount":6,
+            "type":"town"
+        }
+    ]
+}

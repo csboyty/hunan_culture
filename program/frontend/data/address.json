@@ -1,0 +1,26 @@
+{
+    "data":{
+        "sEcho":1,
+        "success":true,
+        "iTotalRecords":20,
+        "iTotalDisplayRecords":20,
+        "aaData": [{
+            "id":1,
+            "name": "包",
+            "description": 20,
+            "province":"湖南",
+            "city":"通道",
+            "longitude": 119,
+            "latitude": 6
+        },
+        {
+            "id":2,
+            "name": "包",
+            "province":"重庆",
+            "city":"酉阳",
+            "description": 20,
+            "longitude": 119,
+            "latitude": 26
+        }]
+    }
+}

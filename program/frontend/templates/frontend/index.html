@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height,
+    initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <meta name="keywords" content="湖湘文化"/>
+    <meta name="description" content="湖湘文化">
+    <base href="http://192.168.2.104/hnc/">
+    <title>湖湘文化</title>
+    <link href="static/css/frontend/lib/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="static/css/frontend/lib/toaster.css" rel="stylesheet" type="text/css">
+    <link href="static/css/frontend/src/main.css" rel="stylesheet" type="text/css">
+</head>
+<body ng-controller="super">
+    <header class="header" id="header" can-visit>
+        <h1 class="logo">
+            <a href="./" target="_self">湖湘文化</a>
+        </h1>
+        <nav class="menu">
+            <li class="item"><a class="link link1" ng-class="{active:mainFlags.menuName=='list'}" href="./">列表
+                <span class="arrow">下面的小三角</span></a></li>
+            <li class="item"><a class="link link2" ng-class="{active:mainFlags.menuName=='map'}" href="map">地图
+                <span class="arrow">下面的小三角</span></a></li>
+        </nav>
+        <div class="searchContainer" ng-if="mainFlags.showSearch">
+            <input type="search" class="searchInput" ng-model="mainFlags.searchContent">
+            <button class="searchBtn" ng-click="search()">搜索</button>
+        </div>
+    </header>
+    <section class="main" set-map-size ng-view  window-scroll watch-height></section>
+    <footer class="footer" id="footer">
+        <p class="copyRight">&copy;Right湖湘文化</p>
+    </footer>
+
+    <div class="blackout" ng-show="rootFlags.showBlackOut"></div>
+
+    <section class="loading animation_loading" ng-show="rootFlags.showLoading">
+        <span class="loading_spinner">Loading...</span>
+    </section>
+
+
+
+
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=2DpY9jBzrBrnwzekqGw4pV4G"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>
+    <script type="text/javascript" id="bdshare_js" data="type=tools" ></script>
+    <script type="text/javascript" id="bdshell_js"></script>
+
+
+    <script type="text/javascript" src="static/js/frontend/lib/angular.min.js"></script>
+    <script type="text/javascript" src="static/js/frontend/lib/angular-resource.min.js"></script>
+    <script type="text/javascript" src="static/js/frontend/lib/angular-animate.min.js"></script>
+    <script type="text/javascript" src="static/js/frontend/lib/angular-route.min.js"></script>
+    <script type="text/javascript" src="static/js/frontend/lib/toaster.js"></script>
+    <script type="text/javascript" src="static/js/frontend/lib/paging.js"></script>
+    <script type="text/javascript" src="static/js/frontend/src/services.js"></script>
+    <script type="text/javascript" src="static/js/frontend/src/controllers.js"></script>
+    <script type="text/javascript" src="static/js/frontend/src/directives.js"></script>
+    <script type="text/javascript" src="static/js/frontend/src/app.js"></script>
+
+
+    <div class="forbiddenTip" ng-show="mainFlags.showTip">您的浏览器不支持html5，请使用支持html5的浏览器进行访问！</div>
+</body>
+</html>

@@ -1,0 +1,804 @@
+body{
+    width: 100%;
+    margin: 0px;
+    padding:0px;
+    font-family: Arial,"微软雅黑","黑体";
+    background: #efefef;
+    min-width: 1024px;
+    max-width: 1920px;
+}
+a{
+    text-decoration: none!important;
+}
+ul{
+    padding:0px;
+    margin: 0px;
+}
+img{
+    border:none;
+}
+li{
+    list-style: none;
+    display: inline-block;
+}
+.ellipsis{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+/**
+*架构
+*/
+.header{
+    background: url(../../../images/frontend/app/header.png) no-repeat;
+    background-size: 100% 100%;
+    height: 90px;
+    position: relative;
+    padding:0px 10%;
+}
+.main{
+    width: 80%;
+    margin: auto;
+    position: relative;
+    padding-bottom: 40px;
+}
+/*.footer{
+    border-top: 2px solid #e50037;
+    background: #161616;
+    height: 80px;
+}*/
+.footer .copyRight{
+    color: #ccc;
+    text-align: center;
+    line-height: 60px;
+}
+/**
+*logo
+*/
+.logo{
+    margin: 0px 0px 0px -200px;
+    height: 56px;
+    width: 401px;
+    font-weight: normal;
+    text-align: center;
+    position: absolute;
+    left:50%;
+    top:25px;
+    z-index: 10;
+}
+.logo a{
+    color: #fff;
+    font-size: 0px;
+    background: url(../../../images/frontend/app/logo.png) no-repeat;
+    display: block;
+    height: 100%;
+}
+/**
+* menu
+*/
+.menu{
+    position: relative;
+    height: 100%;
+    left:0px;
+    top:0px;
+    z-index: 5;
+}
+.menu .item{
+    height: 100%;
+    vertical-align: top;
+}
+.menu .item .link{
+    padding: 60px 30px 0px 30px;
+    color: #fff;
+    height: 100%;
+    display: block;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    position: relative;
+}
+.menu .item .link .arrow{
+    font-size: 0px;
+    border-style: solid;
+    border-color: transparent;
+    border-width:10px;
+    border-top-color: #e50037;
+    position: absolute;
+    bottom:-20px;
+    left:50%;
+    margin-left: -10px;
+    display: none;
+}
+.menu .item .link1{
+    background: url(../../../images/frontend/app/iconList.png) no-repeat center 17px;
+}
+.menu .item .link2{
+    background: url(../../../images/frontend/app/iconMap.png) no-repeat center 17px;
+}
+.menu .item .link:hover{
+    color: #e50037;
+}
+.menu .item .link1:hover{
+    background: url(../../../images/frontend/app/iconListHover.png) no-repeat center 17px;
+}
+.menu .item .link2:hover{
+    background: url(../../../images/frontend/app/iconMapHover.png) no-repeat center 17px;
+}
+.menu .item .link.active{
+    color: #fff;
+    height: 110%;
+}
+.menu .item .link.active .arrow{
+    display: block;
+}
+.menu .item .link1.active{
+    background: url(../../../images/frontend/app/iconList.png) no-repeat center 12px #e50037;
+}
+.menu .item .link2.active{
+    background: url(../../../images/frontend/app/iconMap.png) no-repeat center 12px #e50037;
+}
+/**
+*search
+*/
+.searchContainer{
+    height: 30px;
+    width: 200px;
+    position: absolute;
+    right: 10%;
+    top:30px;
+    z-index: 15;
+}
+.searchContainer .searchInput{
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: none;
+    outline: none;
+    border-bottom: 1px solid #fff;
+    color: #fff;
+    font-size: 14px;
+    line-height: 30px;
+}
+.searchContainer .searchBtn{
+    width: 16px;
+    height: 16px;
+    border: none;
+    font-size: 0px;
+    outline: none;
+    background: url(../../../images/frontend/app/search.png) no-repeat;
+    position: absolute;
+    right:0px;
+    bottom:5px;
+    cursor: pointer;
+}
+.searchContainer .searchBtn:hover{
+    background: url(../../../images/frontend/app/searchHover.png) no-repeat;
+}
+/**
+*menu1
+*/
+.menu1{
+    text-align: center;
+    margin-top: 20px;
+    padding-bottom: 14px;
+    background: url(../../../images/frontend/app/line.png) repeat-x left bottom;
+}
+.menu1 .item{
+
+}
+.menu1 .item .link{
+    color: #000;
+    padding-left:20px;
+    margin-left: 10px;
+    position: relative;
+    font-size: 16px;
+    line-height: 18px;
+    display: block;
+}
+.menu1 .item .arrow{
+    font-size: 0px;
+    border-style: solid;
+    border-color: transparent;
+    border-width:5px;
+    border-bottom-color: #e50037;
+    position: absolute;
+    bottom: -11px;
+    left: 0px;
+    display: none;
+}
+.menu1 .item .arrow1{
+    border-bottom-color: #efefef;
+    bottom: -12px;
+    left: 0px;
+}
+.menu1 .item .link1{
+    background: url(../../../images/frontend/app/iconArticle.png) no-repeat;
+}
+.menu1 .item .link2{
+    background: url(../../../images/frontend/app/iconMusic.png) no-repeat;
+}
+.menu1 .item .link3{
+    background: url(../../../images/frontend/app/iconVideo.png) no-repeat;
+}
+.menu1 .item .link:hover{
+
+}
+.menu1 .item .link1:hover{
+    background: url(../../../images/frontend/app/iconArticleHover.png) no-repeat;
+}
+.menu1 .item .link2:hover{
+    background: url(../../../images/frontend/app/iconMusicHover.png) no-repeat;
+}
+.menu1 .item .link3:hover{
+    background: url(../../../images/frontend/app/iconVideoHover.png) no-repeat;
+}
+.menu1 .item .link.active{
+    color: #e50037;
+}
+.menu1 .item .link.active .arrow{
+    display: block;
+}
+.menu1 .item .link1.active{
+    background: url(../../../images/frontend/app/iconArticleActive.png) no-repeat;
+}
+.menu1 .item .link2.active{
+    background: url(../../../images/frontend/app/iconMusicActive.png) no-repeat;
+}
+.menu1 .item .link3.active{
+    background: url(../../../images/frontend/app/iconVideoActive.png) no-repeat;
+}
+/*--------------------------------------all list---------------------------*/
+/**
+*list(文章列表)
+*/
+.list{
+    font-size: 0px;
+    margin-right: -2%;
+}
+.list .item{
+    width: 23%;
+    margin: 2% 2% 0px 0px;
+    background: #fff;
+    border-radius: 5px;
+    position: relative;
+    padding:10px 0px;
+    box-shadow:0px 0px 5px 1px #adadad;
+}
+.list .item .link{
+
+}
+.list .item .title{
+    color:#141414;
+    font-size: 16px;
+    line-height: 16px;
+    margin: 0px 0px 5px 0px;
+    width:70%;
+    padding:0px 5%;
+}
+.list .item .date{
+    color: #adadad;
+    font-size: 12px;
+    padding:0px 5%;
+    margin-bottom: 5px;
+    display: block;
+}
+.list .item .category{
+    position: absolute;
+    font-size: 12px;
+    line-height: 18px;
+    color: #fff;
+    background: #e50037;
+    right:5%;
+    top:10px;
+    padding:4px 10px;
+}
+.list .item .thumbContainer{
+    position: relative;
+}
+.list .item .thumbContainer .hover{
+    background: #fff;
+    opacity: .3;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    font-size: 0px;
+    top:0px;
+    left:0px;
+    display: none;
+}
+.list .item .playIcon{
+    width: 36px;
+    height: 36px;
+    background: url(../../../images/frontend/app/iconPlay.png) no-repeat;
+    display: none;
+    position: absolute;
+    z-index: 5;
+    left:50%;
+    top:50%;
+    margin: -18px 0px  0px -18px;
+    font-size: 0px;
+}
+.list .item .thumb{
+    width: 100%;
+    height: auto;
+}
+.list .item .excerpt{
+    padding:0px 5%;
+    color: #4c4c4c;
+    font-size: 14px;
+    line-height: 21px;
+    height: 63px;
+    overflow: hidden;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+.list .item:hover .thumbContainer .hover{
+    display: block;
+}
+.list .item:hover .playIcon{
+    display: block;
+}
+/**
+*list1
+*/
+.list1{
+    margin-right: -2.3%;
+}
+.list1 .item{
+    width: 31%;
+    margin: 2.3% 2.3% 0px 0px;
+    padding-top:0px;
+}
+.list1 .item .link{
+
+}
+.list1 .item .thumb{
+    border-radius: 5px 5px 0px 0px;
+}
+.list1 .item .title{
+    margin: 15px 0px 5px 0px;
+}
+/**
+*list2
+*/
+.list2{
+    width: 70%;
+    font-size: 0px;
+    display: inline-block;
+    vertical-align: top;
+}
+.list2 .item{
+    position: relative;
+    display: block;
+    padding: 20px 5% 15px 24px;
+    background: url(../../../images/frontend/app/musicListBg.png) repeat-x left top;
+}
+.list2 .lastItem{
+    background: url(../../../images/frontend/app/musicListBg.png) repeat-x left top;
+    display: block;
+    height: 16px;
+}
+.list2 .item:first-child{
+    background: none;
+}
+.list2 .item .thumb{
+    border-radius: 80px;
+    vertical-align: middle;
+    margin-right: 15px;
+    display: none;
+    width: 160px;
+}
+.list2 .item .title{
+    font-size: 16px;
+    color:#141414;
+    display: inline-block;
+    width: 60%;
+    margin: 0px;
+    vertical-align: top;
+}
+.list2 .item .author{
+    display: inline-block;
+    font-size: 15px;
+    color:#515151;
+}
+.list2 .item:not(.active):hover{
+    background-color:#e8e8e8;
+    cursor: pointer;
+}
+.list2 .item:not(.active):hover .thumb{
+    display: inline;
+}
+.list2 .item:not(.active):hover .title{
+    margin-top: 40px;
+    font-size: 18px;
+}
+.list2 .item:not(.active):hover .author{
+    position: absolute;
+    top: 85px;
+    left: 160px;
+}
+.list2 .item:not(.active):hover .share{
+    margin-top: 40px;
+}
+
+.list2 .item.active{
+    background: url(../../../images/frontend/app/musicPlaying.gif) no-repeat 2px 15px,
+    url(../../../images/frontend/app/musicListBg.png) repeat-x left top;
+}
+.list2 .item.active:first-child{
+    background: url(../../../images/frontend/app/musicPlaying.gif) no-repeat 2px 15px;
+}
+/***--------------------------------------------small component---------------*/
+.address{
+    font-size: 14px;
+    line-height: 21px;
+    background: url(../../../images/frontend/app/iconLocation.png) no-repeat;
+    color: #adadad;
+    text-indent: 20px;
+    display: inline-block;
+    margin-left: 5%;
+}
+.address1{
+    margin-left: 0px;
+}
+/**
+*share
+*/
+.share{
+    float: right;
+    font-size: 14px;
+    padding-left: 20px;
+    display: block;
+    background: url(../../../images/frontend/app/iconShare.png) no-repeat;
+    position: relative;
+}
+.share #bdshare{
+    position: absolute;
+    white-space: nowrap;
+    left: -25px;
+    top: -25px;
+    display: none;
+    width: 100px;
+}
+.share:hover{
+    background: url(../../../images/frontend/app/iconShareHover.png) no-repeat;
+    cursor: pointer;
+}
+.share:hover #bdshare{
+    display: block;
+}
+span.bds_more, .bds_tools a{
+    box-sizing: content-box;
+}
+/**
+*musicPlayer
+*/
+.musicPlayerContainer{
+    width: 28%;
+    background: #fff;
+    box-shadow:0px 0px 5px 1px #adadad;
+    display: inline-block;
+    margin-top: 10px;
+    border-radius: 5px;
+    margin-left: 2%;
+    font-size: 14px;
+}
+.musicPlayerContainer .thumb{
+    width: 100%;
+    height: auto;
+    border-radius: 5px 5px 0px 0px;
+}
+.musicPlayerContainer .info{
+    padding: 0px 5% 10px 5%;
+}
+.musicPlayerContainer .info .title{
+    text-align: center;
+    margin:5px 0px;
+}
+.musicPlayerContainer .info .author{
+    text-align: center;
+    margin: 0px;
+}
+.musicPlayerContainer .info .excerpt{
+    font-size: 14px;
+    color: #515151;
+    text-indent: 28px;
+    background: url(../../../images/frontend/app/musicDetailBg.png) repeat-x bottom center;
+    padding-bottom:20px;
+    position: relative;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+.musicPlayerContainer .musicControls{
+    text-align: justify;
+    font-size: 0px;
+}
+.musicPlayerContainer .musicControls .prev{
+    width: 33%;
+    height: 22px;
+    display: inline-block;
+    vertical-align: middle;
+    background: url(../../../images/frontend/app/musicPrev.png) no-repeat;
+}
+.musicPlayerContainer .musicControls .play{
+    display: inline-block;
+    width: 33%;
+    height: 32px;
+    vertical-align: middle;
+    background: url(../../../images/frontend/app/musicPlay.png) no-repeat center center;
+}
+.musicPlayerContainer .musicControls .pause{
+    display: inline-block;
+    width: 33%;
+    height: 32px;
+    vertical-align: middle;
+    background: url(../../../images/frontend/app/musicPause.png) no-repeat center center;
+}
+.musicPlayerContainer .musicControls .next{
+    width: 33%;
+    height: 22px;
+    display: inline-block;
+    vertical-align: middle;
+    background: url(../../../images/frontend/app/musicNext.png) no-repeat right center;
+}
+.musicPlayerContainer .musicControls .prev:hover{
+    cursor:pointer;
+    background: url(../../../images/frontend/app/musicPrevHover.png) no-repeat;
+}
+.musicPlayerContainer .musicControls .play:hover{
+    cursor:pointer;
+    background: url(../../../images/frontend/app/musicPlayHover.png) no-repeat center center;
+}
+.musicPlayerContainer .musicControls .pause:hover{
+    cursor:pointer;
+    background: url(../../../images/frontend/app/musicPauseHover.png) no-repeat center center;
+}
+.musicPlayerContainer .musicControls .next:hover{
+    cursor:pointer;
+    background: url(../../../images/frontend/app/musicNextHover.png) no-repeat  right center;
+}
+.musicProcess{
+    background: #adadad;
+    height: 3px;
+    width: 100%;
+    margin: 10px 0px;
+}
+.musicProcess .musicProcessValue{
+    background: #e50037;
+    height: 3px;
+    width: 0;
+}
+/*-----------------------------------------------------页面-------------------*/
+/**
+*单篇文章
+*/
+.single{
+
+}
+.single .sHeader{
+    background: url(../../../images/frontend/app/line.png) repeat-x left bottom;
+    padding-bottom: 15px;
+    padding-left: 20%;
+}
+.single .title{
+    font-size: 40px;
+    color: #515151;
+}
+.single .sContent{
+    width: 70%;
+    margin-left: 20%;
+}
+.single .excerpt{
+    font-size: 14px;
+    line-height: 21px;
+    text-indent: 28px;
+    color: #515151;
+    border: none;
+    background: none;
+}
+.single .shareContainer{
+    float: right;
+}
+.single .shareContainer label{
+    float: left;
+    font-size: 14px;
+    line-height: 25px;
+}
+.single .return{
+    float: left;
+    padding-left:20px;
+    background: url(../../../images/frontend/app/iconReturn.png) no-repeat;
+    margin-left: -25%;
+    font-size: 14px;
+    color: #adadad;
+    line-height: 21px;
+}
+.single .return:hover{
+    background: url(../../../images/frontend/app/iconReturnHover.png) no-repeat;
+}
+.single .date{
+    padding-left: 20px;
+    background: url(../../../images/frontend/app/iconDate.png) no-repeat;
+    font-size: 14px;
+    color: #515151;
+}
+.single .images{
+    position: relative;
+    margin:20px 0px;
+}
+.single .images .title{
+    font-size: 13px;
+    color:#7c7c7c;
+    width: 108px;
+    border-right: 1px solid #adadad;
+    padding-right: 1px;
+    position: absolute;
+    left:-120px;
+    top:0px;
+    line-height: 18px;
+}
+.single .images img{
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: auto;
+}
+.single #sewise_player{
+    margin-top: 30px;
+    min-height: 480px;
+}
+/*********/
+.single1 .sHeader{
+    padding-left: 10%;
+}
+.single1 .return{
+    margin-left: -11%;
+}
+.single1 .sContent{
+    width: 80%;
+    margin-left: 10%;
+}
+/**
+*
+*/
+.map{
+    width: 100%;
+    height: 100%;
+}
+.BMap_bubble_title{
+    color: #141414;
+    font-size: 16px;
+    font-weight: bold;
+}
+.infoWindow{
+
+}
+.infoWindow a{
+    display: block;
+}
+.infoWindow .thumb{
+    display: block;
+    width: 100%;
+}
+.infoWindow .info{
+    font-size: 0px;
+    padding: 15px 0px;
+}
+.infoWindow .left{
+    width: 35%;
+    display: inline-block;
+    vertical-align: top;
+}
+.infoWindow .right{
+    width: 60%;
+    display: inline-block;
+    vertical-align: top;
+}
+.infoWindow .category{
+    font-size: 12px;
+    line-height: 18px;
+    color: #fff;
+    background: #e50037;
+    padding:4px 10px;
+}
+.infoWindow .date{
+    color: #adadad;
+    font-size: 12px;
+    margin-top: 5px;
+    display: block;
+}
+.infoWindow .excerpt{
+    font-size: 14px;
+    line-height: 21px;
+    height: 105px;
+    color: #515151;
+    margin: 0px 0px 0px 5%;
+    overflow: hidden;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+.infoWindow .control{
+    font-size: 0px;
+    display: block;
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    left:50%;
+    margin-left: -18px;
+    top:75px;
+    cursor: pointer;
+}
+.infoWindow .play{
+    background: url(../../../images/frontend/app/iconPlay.png) no-repeat;
+}
+.infoWindow .pause{
+    background: url(../../../images/frontend/app/iconPause.png) no-repeat;
+}
+.infoWindow1 .thumb{
+    border-radius: 80px;
+    width: auto;
+    margin: 10px auto 0 auto;
+    border: 2px solid #ccc;
+}
+.infoWindow .address{
+    margin-top: 45px;
+    margin-left: 0px;
+}
+.infoWindow1 .address{
+    margin-top: 65px;
+}
+.infoWindow2 .address{
+    margin-top: 0px;
+}
+
+/**
+*loading
+*/
+.blackout {
+    background: #000;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 9998;
+    opacity: 0.7;
+    top: 0;
+    left: 0;
+}
+.forbiddenTip{
+    color: #fff;
+    font-size: 36px;
+    line-height: 40px;
+    text-align: center;
+    position: fixed;
+    z-index: 10001;
+    top:0px;
+    left:0px;
+    width: 100%;
+    height: 100%;
+    background: #000;
+}
+.loading{
+    position: absolute;
+    z-index: 10000;
+    top: 50%;
+    left: 50%;
+    height:60px;
+    width:80px;
+    text-align: center;
+    line-height: 100%;
+    color:#ccc;
+    margin: -30px 0px 0px -40px;
+}
+.loading_spinner{
+
+}
+
+/*----------------------------重写分页------------------------*/
+.pagination{
+    display: block;
+    text-align: center;
+}
+.pagination>li{
+    display: inline-block;
+    cursor: pointer;
+}

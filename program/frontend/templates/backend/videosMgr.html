@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% include "backend/head.html" %}
+    <link href="static/css/backend/lib/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="static/css/backend/lib/jquery.dataTables.css" rel="stylesheet" type="text/css">
+    <link href="static/css/backend/lib/jquery.toastmessage.css" rel="stylesheet" type="text/css">
+    <link href="static/css/backend/src/main.css" rel="stylesheet" type="text/css">
+    <script src="static/js/backend/lib/jquery-2.0.3.min.js"></script>
+    <script src="static/js/backend/lib/bootstrap.min.js"></script>
+    <script src="static/js/backend/lib/jquery.dataTables.min.js"></script>
+    <script src="static/js/backend/lib/jquery.toastmessage.js"></script>
+    <script src="static/js/backend/src/config.js"></script>
+    <script src="static/js/backend/src/functions.js"></script>
+    <script src="static/js/backend/src/videosMgr.js"></script>
+</head>
+<body>
+
+{% include "backend/header.html" %}
+{% include "backend/menu.html" %}
+
+<section class="right">
+    <article class="main">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h1 class="panel-title">视频管理</h1>
+            </div>
+            <div class="panel-body" id="opt-body">
+                <a class="btn btn-success" href="admin/article/article_video/create">
+                    <span class="glyphicon glyphicon-plus"></span> 发布视频
+                </a>
+                <div class="input-group tableSearchContainer col-md-6">
+                    <input type="text" id="searchContent" class="form-control" placeholder="名称">
+                    <span class="input-group-btn">
+                        <button id="searchBtn" class="btn btn-default" type="button">搜索</button>
+                    </span>
+                </div>
+                <table id="myTable" class="dataTable">
+                    <thead>
+                    <tr>
+                        <th>标题</th>
+                        <th>地点</th>
+                        <th>经度</th>
+                        <th>纬度</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <!--<td>dddddddd</td>
+                        <td>dddddddd</td>
+                        <td>dddddddd</td>
+                        <td>dddddddd</td>
+                        <td><a href="#" class="update">修改</a>&nbsp;<a href="#" class="update">删除</a></td>-->
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </article>
+</section>
+
+
+<div class="loading hidden" id="loading">
+    <span class="text">Loading...</span>
+</div>
+
+
+</body>
+</html>

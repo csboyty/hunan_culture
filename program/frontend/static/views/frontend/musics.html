@@ -1,0 +1,69 @@
+<ul class="menu1">
+    <li class="item"><a class="link link1 " href="./">文章
+        <span class="arrow">下面的三角，采用覆盖</span>
+        <span class="arrow arrow1">下面的三角，采用覆盖</span>
+    </a></li>
+    <li class="item"><a class="link link2 active" href="musics">音乐
+        <span class="arrow">下面的三角，采用覆盖</span>
+        <span class="arrow arrow1">下面的三角，采用覆盖</span></a></li>
+    <li class="item"><a class="link link3 " href="videos">视频
+        <span class="arrow">下面的三角，采用覆盖</span>
+        <span class="arrow arrow1">下面的三角，采用覆盖</span></a></li>
+</ul>
+<section style="font-size:0">
+    <ul class="list2">
+        <li class="item" ng-class="{active:currentIndex==$index&&isMusicPlay}"
+            ng-repeat="i in items track by $index" ng-click="playMusic($index)">
+            <img class="thumb" ng-src="{{i.profile}}">
+            <h2 class="title ellipsis">{{i.title}}</h2>
+            <span class="author">{{i.author}}</span>
+                <span  class="share">分享
+                    <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare" data="{'text':'{{i.title}}'}">
+                        <a class="bds_qzone"></a>
+                        <a class="bds_tsina"></a>
+                        <a class="bds_tqq"></a>
+                        <a class="bds_renren"></a>
+                    </div>
+                </span>
+        </li>
+        <li class="lastItem">为了增加最后的背景</li>
+    </ul>
+    <aside class="musicPlayerContainer" ng-show="music">
+        <audio style="display: none" own-src="{{music.url}}" id="audio" autoplay="" loop></audio>
+        <img class="thumb" ng-src="{{music.profile}}">
+        <div class="info">
+            <h3 class="title ellipsis">{{music.title}}</h3>
+            <p class="author">{{music.author}}</p>
+            <div class="musicProcess">
+                <div class="musicProcessValue" ng-style="{width:audioTime}"></div>
+            </div>
+            <div class="musicControls">
+                <span class="prev" ng-click="prev()">前一首</span>
+                <span ng-class="{pause:isMusicPlay,play:!isMusicPlay}" ng-click="playOrPause()">播放/暂停</span>
+                <span class="next" ng-click="next()">后一首</span>
+            </div>
+            <p class="excerpt">
+                {{music.description}}
+            </p>
+                <span  class="share">分享
+                    <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+                        <a class="bds_qzone"></a>
+                        <a class="bds_tsina"></a>
+                        <a class="bds_tqq"></a>
+                        <a class="bds_renren"></a>
+                    </div>
+                </span>
+            <span class="address address1">{{music.location.city}} {{music.location.name}}</span>
+        </div>
+    </aside>
+</section>
+<div ng-if="showPaging">
+<paging
+        class="small"
+        page="currentPage"
+        page-size="pageSize"
+        total="total"
+        show-prev-next="true"
+        paging-action="DoCtrlPagingAct('Paging Clicked', page, pageSize, total)">
+</paging>
+</div>

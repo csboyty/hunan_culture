@@ -1,0 +1,24 @@
+<article class="single">
+    <header class="sHeader">
+        <h2 class="title">{{article.title}}</h2>
+        <div class="shareContainer">
+            <label>分享:</label>
+            <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+                <a class="bds_qzone"></a>
+                <a class="bds_tsina"></a>
+                <a class="bds_tqq"></a>
+                <a class="bds_renren"></a>
+            </div>
+        </div>
+        <!--<a href=""  class="return" ng-click="goBack()">返回</a>-->
+        <time class="date">{{article.date_add}}</time>
+        <span class="address address1">{{article.location.city}} {{article.location.name}}</span>
+    </header>
+    <section class="sContent">
+        <pre class="excerpt">{{article.description}}</pre>
+        <figure class="images" ng-repeat="a in article.assets">
+            <figcaption class="title">{{a.description}}</figcaption>
+            <img ng-src="{{a.profile_file}}">
+        </figure>
+    </section>
+</article>

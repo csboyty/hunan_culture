@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height,
+    initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <meta name="keywords" content="湖湘文化"/>
+    <meta name="description" content="湖湘文化">
+    <title>湖湘文化</title>
+    <link href="css/lib/toaster.css" type="text/css" rel="stylesheet">
+    <link href="css/src/index.css" type="text/css" rel="stylesheet">
+    <!--<script src="js/src/baiduAnalytics.js"></script>-->
+    <script type="text/javascript" src="js/lib/modernizr.custom.js"></script>
+    <script type="text/javascript">
+        Modernizr.addTest('ismobile', function(){
+            var userAgentList = new Array("2.0 MMP", "240320", "AvantGo","BlackBerry", "Blazer",
+                    "Cellphone", "Danger", "DoCoMo", "Elaine/3.0", "EudoraWeb", "hiptop", "IEMobile", "KYOCERA/WX310K", "LG/U990",
+                    "MIDP-2.0", "MMEF20", "MOT-V", "NetFront", "Newt", "Nintendo Wii", "Nitro", "Nokia",
+                    "Opera Mini", "Opera Mobi",
+                    "Palm", "Playstation Portable", "portalmmm", "Proxinet", "ProxiNet",
+                    "SHARP-TQ-GX10", "Small", "SonyEricsson", "Symbian OS", "SymbianOS", "TS21i-10", "UP.Browser", "UP.Link",
+                    "Windows CE", "WinWAP", "Android", "iPhone", "iPod", "iPad", "Windows Phone", "HTC", "GTB");
+            var appNameList = new Array("Microsoft Pocket Internet Explorer");
+
+            var userAgent = navigator.userAgent.toString();
+            var appName = navigator.appName.toString();
+            var agentLength=userAgentList.length,appLength=appNameList.length;
+            var i= 0,j=0;
+
+            for (; i<agentLength; i++) {
+                if (userAgent.indexOf(userAgentList[i]) >= 0) {
+                    return true;
+                }
+            }
+
+            for (; j<appLength; j++) {
+                if (appName.indexOf(appNameList[j]) >= 0) {
+                    return true;
+                }
+            }
+
+            return false;
+        });
+        //加载资源
+        Modernizr.load([
+            {
+                test:Modernizr.ismobile,
+                nope:[
+                    //加载最终的版本
+                    "http://api.map.baidu.com/getscript?v=2.0&ak=2DpY9jBzrBrnwzekqGw4pV4G&services=&t=20141225114239",
+                    "http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js",
+                    "http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"
+                ],
+                callback:function(key,testResult){
+                    //console.log(testResult);
+                },
+                yep:[
+                    "http://api.map.baidu.com/getscript?type=quick&file=api&ak=2DpY9jBzrBrnwzekqGw4pV4G&t=20140109092002",
+                    "http://api.map.baidu.com/getscript?type=quick&file=feature&ak=2DpY9jBzrBrnwzekqGw4pV4G&t=20140109092002"
+                ]
+            }
+        ]);
+    </script>
+    <!--<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=2DpY9jBzrBrnwzekqGw4pV4G"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>-->
+    <!--极速版本-->
+    <!--<script type="text/javascript" src="http://api.map.baidu.com/api?type=quick&ak=2DpY9jBzrBrnwzekqGw4pV4G&v=1.0"></script>-->
+    <script src="js/lib/jquery-2.1.1.min.js"></script>
+    <!--<script src="js/lib/jquery.ellipsis.js"></script>-->
+    <script src="js/lib/angular.min.js"></script>
+    <script src="js/lib/angular-touch.min.js"></script>
+    <script src="js/lib/angular-resource.min.js"></script>
+    <script src="js/lib/angular-animate.min.js"></script>
+    <script src="js/lib/toaster.js"></script>
+    <script src="js/src/services.js"></script>
+    <script src="js/src/directives.js"></script>
+    <script src="js/src/filters.js"></script>
+    <script src="js/src/viewControllers.js"></script>
+    <script src="js/src/app.js"></script>
+</head>
+
+<body ng-controller="super">
+    <toaster-container toaster-options="{'position-class': 'toast-top-right'}"></toaster-container>
+    <section class="main" set-scroll-top>
+        <header class="header">
+            <h1 class="logo"><a href="">湖湘文化</a></h1>
+            <input class="search" ng-class="{hidden:mainVars.activeTabIndex==2&&mainVars.showTownDetail==false}" ng-keydown="searchInputKeyDown($event)"
+                   ng-model="mainVars.searchContent" type="search" placeholder="请输入地点后按Enter">
+            <ul class="menu" id="menu" ng-class="{hidden:mainVars.activeTabIndex==2&&mainVars.showTownDetail==false}">
+                <li><a href="" ng-class="{active:mainVars.activeCategory==''}" ng-click="searchCategory('')">全部</a></li>
+                <li><a href="" ng-class="{active:mainVars.activeCategory=='风景'}" ng-click="searchCategory('风景')">风景</a></li>
+                <li><a href="" ng-class="{active:mainVars.activeCategory=='人文'}" ng-click="searchCategory('人文')">人文</a></li>
+                <li><a href="" ng-class="{active:mainVars.activeCategory=='物语'}" ng-click="searchCategory('物语')">物语</a></li>
+                <li><a href="" ng-class="{active:mainVars.activeCategory=='社区'}" ng-click="searchCategory('社区')">社区</a></li>
+            </ul>
+            <ul class="tab" ng-class="{hidden:mainVars.isMobile===true}">
+                <li><a href="" ng-class="{active:mainVars.activeTabIndex==1}" ng-click="setActiveTab(1)">列表</a></li>
+                <li><a href="" ng-class="{active:mainVars.activeTabIndex==2}" ng-click="setActiveTab(2)">地图</a></li>
+            </ul>
+        </header>
+        <section ng-include="mainVars.contentTemplate" ng-show="mainVars.showMain">
+
+        </section>
+        <section class="townDetail" ng-show="mainVars.showTownDetail" ng-include="mainVars.townDetailUrl">
+
+        </section>
+        <footer class="footer">
+            &copy;Right zyhndesign
+        </footer>
+    </section>
+
+
+    <!-----------blackout----------->
+    <section class="blackout" ng-show="rootFlags.showBlackOut"></section>
+
+    <section class="popWindow" ng-show="mainVars.showPopWindow">
+        <span class="close" ng-class="{mobileClose:mainVars.isMobile===true}" ng-click="hidePopWindow()">关闭</span>
+        <section class="content" ng-include="mainVars.popWindowTemplate"></section>
+    </section>
+
+    <section class="loading animation_loading" ng-show="rootFlags.showLoading">
+        <span class="loading_spinner">Loading...</span>
+    </section>
+
+    <ul class="fixedTab" ng-class="{hidden:mainVars.isMobile===false}">
+        <li><a href="" ng-class="{hidden:mainVars.activeTabIndex==1}" ng-click="setActiveTab(1)">列表</a></li>
+        <li><a href="" ng-class="{hidden:mainVars.activeTabIndex==2}" ng-click="setActiveTab(2)">地图</a></li>
+    </ul>
+</body>
+</html>

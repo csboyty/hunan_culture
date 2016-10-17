@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% include "backend/head.html" %}
+    <link href="static/css/backend/lib/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="static/css/backend/lib/jquery.dataTables.css" rel="stylesheet" type="text/css">
+    <link href="static/css/backend/lib/jquery.toastmessage.css" rel="stylesheet" type="text/css">
+
+    <link href="static/css/backend/src/main.css" rel="stylesheet" type="text/css">
+    <script src="static/js/backend/lib/jquery-2.0.3.min.js"></script>
+    <script src="static/js/backend/lib/bootstrap.min.js"></script>
+    <script src="static/js/backend/lib/jquery.dataTables.min.js"></script>
+    <script src="static/js/backend/lib/jquery.toastmessage.js"></script>
+    <script src="static/js/backend/lib/jquery.form.js"></script>
+    <script src="static/js/backend/lib/jquery.validate.min.js"></script>
+    <script src="static/js/backend/src/config.js"></script>
+    <script src="static/js/backend/src/functions.js"></script>
+    <script src="static/js/backend/src/addressMgr.js"></script>
+</head>
+<body>
+
+{% include "backend/header.html" %}
+{% include "backend/menu.html" %}
+<section class="right">
+    <article class="main">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h1 class="panel-title">地点管理</h1>
+            </div>
+            <div class="panel-body" id="opt-body">
+                <form class="form-horizontal" id="myForm" action="admin/location/create_or_update" method="post">
+                    <input type="hidden" name="description" value="">
+                    <input type="hidden" name="province" value="">
+                    <div class="form-group">
+                        <label class="control-label col-md-2">名称*</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" name="name" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">市/县*</label>
+                        <div class="col-md-8">
+                            <select name="city" class="form-control">
+                                <option value="长沙">长沙</option>
+                                <option value="新疆">新疆</option>
+                                <option value="酉阳">酉阳</option>
+                                <option value="通道">通道</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <button type="submit" class="btn btn-success">添加</button>
+                        </div>
+                    </div>
+                </form>
+                <table id="myTable" class="dataTable">
+                    <thead>
+                    <tr>
+                        <th>名称</th>
+                        <th>市/县</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!--<tr>
+                        <td>dddddddd</td>
+                        <td>dddddddd</td>
+                        <td><a href="#" class="update">修改</a></td>
+                    </tr>-->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </article>
+</section>
+
+<!--修改地点-->
+<div class="modal fade" id="updateAddressModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">地点修改</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" id="updateForm" action="admin/location/create_or_update" method="post">
+                    <input type="hidden" name="location_id" id="locationId">
+                    <input type="hidden" name="description" value="">
+                    <input type="hidden" name="province" value="">
+                    <div class="form-group">
+                        <label for="name" class="control-label col-md-2">名称*</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" name="name" id="name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">市/县*</label>
+                        <div class="col-md-8">
+                            <select name="city" id="city" class="form-control">
+                                <option value="长沙">长沙</option>
+                                <option value="新疆">新疆</option>
+                                <option value="酉阳">酉阳</option>
+                                <option value="通道">通道</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-8">
+                            <button type="submit" class="btn btn-success">确定</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<div class="loading hidden" id="loading">
+    <span class="text">Loading...</span>
+</div>
+
+
+</body>
+</html>

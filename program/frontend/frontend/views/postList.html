@@ -1,0 +1,17 @@
+<!---列表--->
+<ul class="postList" ng-controller="postList"  window-scroll watch-heigth>
+    <li ng-repeat="post in posts">
+        <a href="" ng-click="showSinglePost(post.id)">
+            <img class='thumb' ng-src="{{post.profile}}">
+            <div class="infoContainer">
+                <h4 class='title'>{{post.title}}</h4>
+                <div class='info'>
+                    <span class='date'>{{post.created|getDate}}</span>
+                    <span class='address'>{{post.location.city}}&nbsp;{{post.location.name}}</span>
+                    <span class='category'>{{post.category.name}}</span>
+                </div>
+                <p class='description' ellipsis="2">{{post.description}}</p>
+            </div>
+        </a>
+    </li>
+</ul>

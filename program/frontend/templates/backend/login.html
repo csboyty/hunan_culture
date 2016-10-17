@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% include "backend/head.html" %}
+    <link type="text/css" rel="stylesheet" href="static/css/backend/src/login.css">
+</head>
+<body>
+
+<form class="loginForm" method="post" action="{{ url_for_security('login') }}" name="login_user_form">
+    {{ login_user_form.hidden_tag() }}
+    <span class="loginIcon">登陆图标</span>
+    <h1 class="logo">湖湘文化</h1>
+    <div class="row">
+        <label class="ctrlLabel">邮箱</label>
+        <input class="ctrlInput icon1 bgLc" type="text" name="email">
+    </div>
+    <div class="row">
+        <label  class="ctrlLabel">密码</label>
+        <input class="ctrlInput icon2 bgLc" type="password" name="password">
+    </div>
+    <div class="row">
+        <input type="submit" class="ctrlBtn" value="登陆">
+    </div>
+    {% if login_user_form.errors.values() %}
+    {% for errors in login_user_form.errors.values() %}
+    {% for error in errors %}
+    <label class="error">{{ error }}</label>
+    {% endfor %}
+    {% endfor %}
+    {% endif %}
+</form>
+</body>
+</html>

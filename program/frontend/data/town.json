@@ -1,0 +1,7 @@
+{
+    "success":true,
+    "town":{
+        "name":"第一个镇子",
+        "description":"这是第一个镇子的描述"
+    }
+}
